@@ -17,6 +17,7 @@
  */
 #include <stdlib.h>
 
+#include "mem.h"
 #include "btree.h"
 
 // C can't make this one static but I guess we don't have to expose it
@@ -40,7 +41,29 @@ btree *create_btree()
 
 	// initialise btree memebers first
 	tree->root = NULL;
-	// now initialise btree_internal members
+	// now initialise btree_internal members with mem macros, so
+	// the implementation will depend on whether you pass DEBUG
+	// flag when building the library or not
+#if defined(DEBUG)
+	tree->mallocate = mem_malloc;
+	tree->callocate = mem_calloc;
+#else
+	tree->mallocate = malloc;
+	tree->callocate = calloc;
+#endif
+
+	// returning to client caller, so casting to btree
+	return (btree *)tree;
+}
+
+btree *create_btree_internal()
+{
+	// implementation, so using internal btree structure
+	btree_internal *tree = malloc(sizeof(btree_internal));
+
+	// initialise btree memebers first
+	tree->root = NULL;
+	// now initialise btree_internal members with vanilla malloc family
 	tree->mallocate = malloc;
 	tree->callocate = calloc;
 

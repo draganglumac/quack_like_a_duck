@@ -39,6 +39,7 @@ typedef struct
 } btree;
 
 btree *create_btree();
+btree *create_btree_internal();
 void add_to_btree(btree *tree, void *key, void *val);
 
 #endif

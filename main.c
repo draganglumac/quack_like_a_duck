@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "mem.h"
 #include "btree.h"
 
 int main(int argc, char **argv)
@@ -32,7 +33,15 @@ int main(int argc, char **argv)
 
 	assert((void *)bob == tree->root->records[0]->key);
 	assert((void *)bob == tree->root->records[0]->val);
-	printf("All is well. Goodbye.\n");
+	printf("Key and value seem to be ok.\n");
 
+	printf("Now, I am going to MALLOC some data.\n");
+	printf("If I compile with DEBUG flag I expect to see just one mem_malloc call here.\n");
+	printf("If I compile without DEBUG flag I don't expect to see any mem_malloc calls.\n");
+	printf("->\n");
+	void *temp = MALLOC( sizeof(int) );
+	
+	printf("All is well. Goodbye.\n");
+	
 	return 0;
 }
