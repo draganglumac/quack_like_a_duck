@@ -21,11 +21,11 @@
 #include "btree.h"
 #include "mem.h"
 
-// guarantees vanilla malloc and calloc in memtree
 static btree *memtree = NULL;
 
 void *mem_malloc(size_t size)
 {
+	// guarantees vanilla malloc and calloc in memtree
 	if ( memtree == NULL )
 		memtree = create_btree_internal();
 
