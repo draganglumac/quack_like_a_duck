@@ -1,7 +1,7 @@
 quack_like_a_duck
 =================
 
-Project that demonstrates how to wrap a structure into a hidden implementation structure
+Project that demonstrates how to wrap a C structure into a hidden implementation structure
 and use allocation functions conditionally.
 
 Proviso is, that for internal implementations we want to use vanilla malloc family calls, 
