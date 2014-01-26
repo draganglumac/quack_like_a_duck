@@ -41,9 +41,9 @@ btree *create_btree()
 
 	// initialise btree memebers first
 	tree->root = NULL;
-	// now initialise btree_internal members with mem macros, so
-	// the implementation will depend on whether you pass DEBUG
-	// flag when building the library or not
+	// now initialise btree_internal members with mem_malloc and
+	// mem_calloc if you compile with -DDEBUG flag, and to vanilla
+	// malloc and calloc if you compile without the flag.
 #if defined(DEBUG)
 	tree->mallocate = mem_malloc;
 	tree->callocate = mem_calloc;
