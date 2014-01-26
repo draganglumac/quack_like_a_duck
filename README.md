@@ -8,3 +8,5 @@ Proviso is, that for internal implementations we want to use vanilla malloc fami
 but for external calls we expose MALLOC and
 CALLOC macros that will resolve to internal implementations or vanilla implementations
 depending on whether you compile with a -DDEBUG flag.
+
+It reminds me of duck typing for C hence the name.
