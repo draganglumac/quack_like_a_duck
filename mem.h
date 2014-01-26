@@ -30,4 +30,7 @@ void *mem_calloc(size_t num, size_t size);
 	#define CALLOC(x) calloc(x)
 #endif
 
+// Just for testing in main
+void *get_memtree_key();
+
 #endif

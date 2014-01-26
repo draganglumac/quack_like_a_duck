@@ -44,7 +44,10 @@ int main(int argc, char **argv)
 	printf("If I compile without DEBUG flag I don't expect to see any mem_malloc calls.\n");
 	printf("->\n");
 	void *temp = MALLOC( sizeof(int) );
-	
+#if defined(DEBUG)
+	assert(temp == get_memtree_key());
+	printf("temp is in the memtree\n");
+#endif
 	printf("All is well. Goodbye.\n");
 	
 	return 0;

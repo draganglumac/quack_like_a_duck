@@ -47,3 +47,11 @@ void *mem_calloc(size_t num, size_t size)
 
 	return temp;
 }
+
+void *get_memtree_key()
+{
+	if ( memtree == NULL )
+		return NULL;
+
+	return memtree->root->records[0]->key;
+}
