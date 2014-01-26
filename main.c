@@ -24,9 +24,13 @@
 
 int main(int argc, char **argv)
 {
+#if defined(DEBUG)
+	printf("Compiled with the DEBUG flag.\n");
+#endif
+
 	btree *tree = create_btree();
 
-	printf("btree = %ld\n", tree);
+	printf("btree = 0x%08x\n", tree);
 
 	char *bob = "Bob's your uncle.";
 	add_to_btree(tree, (void *)bob, (void *)bob);

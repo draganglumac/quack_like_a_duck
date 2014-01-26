@@ -41,7 +41,7 @@ void *mem_calloc(size_t num, size_t size)
 	if ( memtree == NULL )
 		memtree = create_btree_internal();
 
-	printf("Calling mem_malloc(%ld)\n", size);
+	printf("Calling mem_calloc(%ld, %ld)\n", num, size);
 	void *temp = calloc(num, size);
 	add_to_btree(memtree, temp, temp);
 
